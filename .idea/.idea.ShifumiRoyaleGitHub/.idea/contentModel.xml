@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Nelson\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Nelson\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_ShifumiRoyaleGitHub.905530439.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Nelson\Documents\Unity\ShifumiRoyaleGitHub" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="DesiredAspectRatio.cs" t="Include" />
+          <e p="FightTrigger.cs" t="Include" />
+          <e p="GameControl.cs" t="Include" />
+          <e p="HealthBarController.cs" t="Include" />
+          <e p="Inventory" t="Include">
+            <e p="Inventory.cs" t="Include" />
+            <e p="InventoryEditor.cs" t="Include" />
+            <e p="Item.cs" t="Include" />
+          </e>
+          <e p="LevelManager.cs" t="Include" />
+          <e p="Main.cs" t="Include" />
+          <e p="MovingTransformOfNonKinematicObjectScript.cs" t="Include" />
+          <e p="PaperBox.cs" t="Include" />
+          <e p="RockBox.cs" t="Include" />
+          <e p="ScaleButtonFont.cs" t="Include" />
+          <e p="ScaleFont.cs" t="Include" />
+          <e p="ScissorBox.cs" t="Include" />
+          <e p="Score.cs" t="Include" />
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="ShifumiRoyaleGitHub.sln" t="IncludeFlat" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
