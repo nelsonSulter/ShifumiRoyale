@@ -19,6 +19,9 @@
           <e p="LevelManager.cs" t="Include" />
           <e p="Main.cs" t="Include" />
           <e p="MovingTransformOfNonKinematicObjectScript.cs" t="Include" />
+          <e p="Objects&amp;NPCs" t="Include">
+            <e p="WorldInteraction.cs" t="Include" />
+          </e>
           <e p="PaperBox.cs" t="Include" />
           <e p="RockBox.cs" t="Include" />
           <e p="ScaleButtonFont.cs" t="Include" />

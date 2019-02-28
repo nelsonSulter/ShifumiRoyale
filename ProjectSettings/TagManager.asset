@@ -9,6 +9,7 @@ TagManager:
   - Loses
   - Total
   - Joueur
+  - Interactable
   layers:
   - Default
   - TransparentFX
