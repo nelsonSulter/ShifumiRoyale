@@ -20,6 +20,12 @@
           <e p="Main.cs" t="Include" />
           <e p="MovingTransformOfNonKinematicObjectScript.cs" t="Include" />
           <e p="Objects&amp;NPCs" t="Include">
+            <e p="Gears" t="Include">
+              <e p="IwaRing.cs" t="Include" />
+            </e>
+            <e p="Gears.cs" t="Include" />
+            <e p="Interactable.cs" t="Include" />
+            <e p="PickUpItems.cs" t="Include" />
             <e p="WorldInteraction.cs" t="Include" />
           </e>
           <e p="PaperBox.cs" t="Include" />

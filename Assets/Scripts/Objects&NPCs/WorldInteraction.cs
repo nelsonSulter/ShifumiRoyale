@@ -53,7 +53,7 @@ public class WorldInteraction : MonoBehaviour
             //On vérifie si c'est un objet avec lequel on peut interagir
             if (interactedObject.tag == "Interactable")
             {
-                Debug.Log("Interacable object touché");
+                interactedObject.GetComponent<Interactable>().interact();
             }
         }
 
