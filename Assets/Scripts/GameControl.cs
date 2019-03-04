@@ -19,6 +19,8 @@ public class GameControl : MonoBehaviour
     public int inFight;
     public float movementSpeed;
     
+    public GameObject playerModel;
+    
     
     // Start is called before the first frame update
     void Awake()
