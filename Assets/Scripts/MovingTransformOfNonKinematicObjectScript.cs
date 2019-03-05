@@ -57,6 +57,43 @@ public class MovingTransformOfNonKinematicObjectScript : MonoBehaviour
         {
             wantToMoveBack = false;
         }
+        
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+
+            if (Inventory2.inventory2.items[0] != null)
+            {
+                Inventory2.inventory2.items[0].Use();
+            }
+            
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            if (Inventory2.inventory2.items[1] != null)
+            {
+                Inventory2.inventory2.items[1].Use();
+            }
+            
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            if (Inventory2.inventory2.items[2] != null)
+            {
+                Inventory2.inventory2.items[2].Use();
+            }
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Alpha4))
+        {
+            if (Inventory2.inventory2.items[3] != null)
+            {
+                Inventory2.inventory2.items[3].Use();
+            }
+        }
+        
+        
 		
     }
 

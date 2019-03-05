@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-public class Inventory : MonoBehaviour
+public class Inventory2 : MonoBehaviour
 {
     
-    public static Inventory inventory;
+    public static Inventory2 inventory2;
     
     //Un tableau contient les instance de classe Item et l'autre contient les images
     public Image[] itemImages = new Image[numItemSlots];
-    public Gears[] items = new Gears[numItemSlots];
+    public Consumable[] items = new Consumable[numItemSlots];
     
     // Le nombre de slot est public pour qu'on puisse y acceder dans notre script inventoryEditor
     public const int numItemSlots = 4;
@@ -16,18 +16,18 @@ public class Inventory : MonoBehaviour
     void Awake()
     {
         // si "inventory" n'a pas encore été créé alors "inventory" = this et il sera conservé de scène en scène
-        if (inventory == null)
+        if (inventory2 == null)
         {
             //permet de conserver l'objet quand on passe de chaine en chaines, sans le détruire
             DontDestroyOnLoad(gameObject);
-            inventory = this;
+            inventory2 = this;
             
         }
         
         //si un objet "inventory" a déjà été créé avant celui là alors on le conserve et on détruit celui là
         else
         {
-            if (inventory != this)
+            if (inventory2 != this)
             {
                 Destroy(gameObject);
             }
@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
         
     }
     
-    public void AddItem(Gears itemToAdd)
+    public void AddItem(Consumable itemToAdd)
     {
         for (int i = 0; i < items.Length; i++)
         {
@@ -53,7 +53,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    public void RemoveItem (Gears itemToRemove)
+    public void useItem (Consumable itemToRemove)
     {
         for (int i = 0; i < items.Length; i++)
         {
@@ -63,6 +63,7 @@ public class Inventory : MonoBehaviour
                 itemImages[i].sprite = null;
                 //On remet la parametre à faux pour ne pas avoir le carré blanc une fois que l'obet a été enlevé de l'inventaire
                 itemImages[i].enabled = false;
+                Destroy(itemToRemove);
                 return;
             }
         }
@@ -75,7 +76,6 @@ public class Inventory : MonoBehaviour
                 Debug.Log("on retire l'objet");
                 Inventory.inventory.items[slotNumber].gameObject.SetActive(true);
                 Inventory.inventory.items[slotNumber].gameObject.transform.position = GameControl.player.playerModel.transform.position;
-                Inventory.inventory.items[slotNumber].gameObject.GetComponent<Gears>().drop();
         
                 items[slotNumber] = null;
                 itemImages[slotNumber].sprite = null;

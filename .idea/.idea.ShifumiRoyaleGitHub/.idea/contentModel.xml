@@ -13,13 +13,18 @@
           <e p="HealthBarController.cs" t="Include" />
           <e p="Inventory" t="Include">
             <e p="Inventory.cs" t="Include" />
+            <e p="Inventory2.cs" t="Include" />
+            <e p="Inventory2Editor.cs" t="Include" />
             <e p="InventoryEditor.cs" t="Include" />
-            <e p="Item.cs" t="Include" />
           </e>
           <e p="LevelManager.cs" t="Include" />
           <e p="Main.cs" t="Include" />
           <e p="MovingTransformOfNonKinematicObjectScript.cs" t="Include" />
           <e p="Objects&amp;NPCs" t="Include">
+            <e p="Consumable.cs" t="Include" />
+            <e p="Consumables" t="Include">
+              <e p="SmallPotion.cs" t="Include" />
+            </e>
             <e p="Gears" t="Include">
               <e p="IwaRing.cs" t="Include" />
             </e>
