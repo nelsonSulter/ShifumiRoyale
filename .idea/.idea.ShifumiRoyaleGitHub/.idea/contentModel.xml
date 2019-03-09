@@ -160,6 +160,8 @@
             </e>
           </e>
           <e p="Editor" t="Include">
+            <e p="Inventory2Editor.cs" t="Include" />
+            <e p="InventoryEditor.cs" t="Include" />
             <e p="PhotonNetwork" t="Include">
               <e p="AccountService.cs" t="Include" />
               <e p="CullAreaEditor.cs" t="Include" />
@@ -288,8 +290,6 @@
           <e p="Inventory" t="Include">
             <e p="Inventory.cs" t="Include" />
             <e p="Inventory2.cs" t="Include" />
-            <e p="Inventory2Editor.cs" t="Include" />
-            <e p="InventoryEditor.cs" t="Include" />
           </e>
           <e p="LevelManager.cs" t="Include" />
           <e p="Main.cs" t="Include" />
