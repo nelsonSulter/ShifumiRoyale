@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
+    public GameObject playerGameObject;
     
     public static Inventory inventory;
     
@@ -20,7 +21,9 @@ public class Inventory : MonoBehaviour
         {
             //permet de conserver l'objet quand on passe de chaine en chaines, sans le détruire
             DontDestroyOnLoad(gameObject);
+            
             inventory = this;
+            
             
         }
         
@@ -72,9 +75,10 @@ public class Inventory : MonoBehaviour
     //surcharge de la fonction RemoveItem, elle a une signature différente et permet de supprimer un objet directement à l'index que l'on choisit
     public void RemoveItem (int slotNumber)
     {
+        
                 Debug.Log("on retire l'objet");
                 Inventory.inventory.items[slotNumber].gameObject.SetActive(true);
-                Inventory.inventory.items[slotNumber].gameObject.transform.position = GameControl.player.playerModel.transform.position;
+                Inventory.inventory.items[slotNumber].gameObject.transform.position = playerGameObject.transform.position;
                 Inventory.inventory.items[slotNumber].gameObject.GetComponent<Gears>().drop();
         
                 items[slotNumber] = null;

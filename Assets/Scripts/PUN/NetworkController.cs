@@ -41,6 +41,16 @@ namespace PUN
             // On instancie le joueur, en récupérant le prefab, sa position et sa rotation
             PhotonNetwork.Instantiate("Prefabs/" + playerGameObject.name, playerGameObject.transform.position,
                 Quaternion.identity, 0);
+            //On recherche le playerGameObject qui correspond à celui du joueur courant pour ensuite utiliser sa position quand il va drop un objet
+            //Pour chaque playerGameObject sur la carte, cherche celui dont je suis le propriétaire
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Joueur")) {
+                if(go.GetComponent<PhotonView>().owner == PhotonNetwork.player)
+                {
+                    Inventory.inventory.playerGameObject = go;
+                    
+                    break;
+                }
+            }
         }
     }
 }
