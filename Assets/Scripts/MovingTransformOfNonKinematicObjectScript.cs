@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class MovingTransformOfNonKinematicObjectScript : MonoBehaviour
 {
-    [SerializeField]
-    private Transform targetTransform;
+    [SerializeField] private GameObject playerGameObject;
+    
+    //type de variable propre à photon, il va servire à corriger un bug qui fait que quand on déplace un personnage, on les déplace tous
+    // Elle permet d'associer au script un seul joueur en gros
+    PhotonView view;
 
     private bool wantToMoveLeft;
 
@@ -14,84 +18,104 @@ public class MovingTransformOfNonKinematicObjectScript : MonoBehaviour
     private bool wantToMoveForward;
     
     private bool wantToMoveBack;
-	
+
+
+    void Start()
+    {
+        // On récupere le composant photon view propre à notre joueur actuel
+        //On va faire des test dessus, si le joueur possède ma vue alors je le déplace, sinon on ne fait rien
+        //Ainsi, seul le joueur dont ce script possède la photon view sera déplacé et le problème est réglé
+        view = GetComponent<PhotonView>();
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            wantToMoveLeft = true;
+            if(view.isMine)
+                wantToMoveLeft = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Q))
         {
-            wantToMoveLeft = false;
+            if(view.isMine)
+                wantToMoveLeft = false;
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            wantToMoveRight = true;
+            if(view.isMine)
+                wantToMoveRight = true;
         }
 
         if (Input.GetKeyUp(KeyCode.D))
         {
-            wantToMoveRight = false;
+            if(view.isMine)
+                wantToMoveRight = false;
         }
         
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            wantToMoveForward = true;
+            if(view.isMine)
+                wantToMoveForward = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Z))
         {
-            wantToMoveForward = false;
+            if(view.isMine)
+                wantToMoveForward = false;
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            wantToMoveBack = true;
-        }
+            if(view.isMine)
+                wantToMoveBack = true;
+        }    
 
         if (Input.GetKeyUp(KeyCode.S))
         {
-            wantToMoveBack = false;
+            if(view.isMine)
+                wantToMoveBack = false;
         }
         
-        if (Input.GetKeyUp(KeyCode.Alpha1))
+        /*if (Input.GetKeyUp(KeyCode.Alpha1))
         {
-
-            if (Inventory2.inventory2.items[0] != null)
-            {
-                Inventory2.inventory2.items[0].Use();
-            }
+            
+            if(view.isMine)
+                if (Inventory2.inventory2.items[0] != null)
+                {
+                    Inventory2.inventory2.items[0].Use();
+                }
             
         }
         
         if (Input.GetKeyUp(KeyCode.Alpha2))
         {
-            if (Inventory2.inventory2.items[1] != null)
-            {
-                Inventory2.inventory2.items[1].Use();
-            }
+            if(view.isMine)
+                if (Inventory2.inventory2.items[1] != null)
+                {
+                    Inventory2.inventory2.items[1].Use();
+                }
             
         }
         
         if (Input.GetKeyUp(KeyCode.Alpha3))
         {
-            if (Inventory2.inventory2.items[2] != null)
-            {
-                Inventory2.inventory2.items[2].Use();
-            }
+            if(view.isMine)
+                if (Inventory2.inventory2.items[2] != null)
+                {
+                    Inventory2.inventory2.items[2].Use();
+                }
         }
         
         if (Input.GetKeyUp(KeyCode.Alpha4))
         {
-            if (Inventory2.inventory2.items[3] != null)
-            {
-                Inventory2.inventory2.items[3].Use();
-            }
-        }
+            if(view.isMine)
+                if (Inventory2.inventory2.items[3] != null)
+                {
+                    Inventory2.inventory2.items[3].Use();
+                }
+        }*/
         
         
 		
@@ -102,22 +126,22 @@ public class MovingTransformOfNonKinematicObjectScript : MonoBehaviour
     {
         if (wantToMoveLeft)
         {
-            targetTransform.position += Vector3.left * 5f * Time.deltaTime;
+            playerGameObject.transform.position += Vector3.left * 5f * Time.deltaTime;
         }
 
         if (wantToMoveRight)
         {
-            targetTransform.position += Vector3.right * 5f * Time.deltaTime;
+            playerGameObject.transform.position += Vector3.right * 5f * Time.deltaTime;
         }
         
         if (wantToMoveForward)
         {
-            targetTransform.position += Vector3.forward * 5f * Time.deltaTime;
+            playerGameObject.transform.position += Vector3.forward * 5f * Time.deltaTime;
         }
         
         if (wantToMoveBack)
         {
-            targetTransform.position += Vector3.back * 5f * Time.deltaTime;
+            playerGameObject.transform.position += Vector3.back * 5f * Time.deltaTime;
         }
         
 		

@@ -25,28 +25,47 @@ public class HealthBarController : MonoBehaviour
     
     [SerializeField]
     private Text currentHealth;
+
+
+    
+    
     
     
     // Start is called before the first frame update
     void Awake()
     {
         healthBar = GetComponent<Slider>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        // La vie max est égale à la vie max du joueur que l'on va chercher dans GameControl.player
-        // La barre de vie dépend des pv courants du joueur
-        healthBar.value = GameControl.player.health;
-        healthBar.maxValue = GameControl.player.maxHealth;
-        
-        // toutes les autres stats du HUD
-        stoneDamage.text = "Stone Damage: " + GameControl.player.damageStone.ToString();
-        scissorDamage.text ="Scissor Damage: " + GameControl.player.damageScissor.ToString();
-        paperDamage.text ="Paper Damage: " + GameControl.player.damagePaper.ToString();
-        movementSpeed.text ="Movement Speed: " + GameControl.player.movementSpeed.ToString();
-        maxHealth.text = GameControl.player.maxHealth.ToString();
-        currentHealth.text = GameControl.player.health.ToString();
+        int index;
+        index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == PhotonNetwork.player);
+        if (index != -1)
+        {
+            
+            
+            
+            // La vie max est égale à la vie max du joueur que l'on va chercher dans GameControl.player
+            // La barre de vie dépend des pv courants du joueur
+            healthBar.value = PlayerManagement.Instance.listeInfoJoueurs[index].health;
+            healthBar.maxValue = PlayerManagement.Instance.listeInfoJoueurs[index].maxHealth;
+
+            // toutes les autres stats du HUD
+            stoneDamage.text = "Stone Damage: " + PlayerManagement.Instance.listeInfoJoueurs[index].damageStone.ToString();
+            scissorDamage.text = "Scissor Damage: " + PlayerManagement.Instance.listeInfoJoueurs[index].damageScissor.ToString();
+            paperDamage.text = "Paper Damage: " + PlayerManagement.Instance.listeInfoJoueurs[index].damagePaper.ToString();
+            movementSpeed.text = "Movement Speed: " +
+                                 PlayerManagement.Instance.listeInfoJoueurs[index].movementSpeed.ToString();
+            maxHealth.text = PlayerManagement.Instance.listeInfoJoueurs[index].health.ToString();
+            currentHealth.text = PlayerManagement.Instance.listeInfoJoueurs[index].maxHealth.ToString();
+        }
+
+        else
+        {
+            print("l'HUD marche pas");
+        }
     }
 }

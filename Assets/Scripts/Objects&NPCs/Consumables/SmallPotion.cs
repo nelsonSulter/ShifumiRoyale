@@ -5,10 +5,10 @@ using UnityEngine;
 public class SmallPotion : Consumable
 {
     // Start is called before the first frame update
-    public override void interact()
+    public override void interact(PhotonView unPhotonView)
     {
         //permet d'inclure le code de la fonction du même nom de la classe dont on hérite, ici "PickUpItems"
-        base.interact();
+        base.interact(unPhotonView);
 
 
     }
@@ -25,7 +25,7 @@ public class SmallPotion : Consumable
             GameControl.player.health += 30;
         }
         
-        Inventory2.inventory2.useItem(this);
+        //Inventory2.inventory2.useItem(this);
         
 
     }

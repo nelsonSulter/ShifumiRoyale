@@ -3,7 +3,7 @@ using UnityEngine.UI;
 public class Inventory2 : MonoBehaviour
 {
     
-    public static Inventory2 inventory2;
+  
     
     //Un tableau contient les instance de classe Item et l'autre contient les images
     public Image[] itemImages = new Image[numItemSlots];
@@ -13,28 +13,7 @@ public class Inventory2 : MonoBehaviour
     public const int numItemSlots = 4;
     
     
-    void Awake()
-    {
-        // si "inventory" n'a pas encore été créé alors "inventory" = this et il sera conservé de scène en scène
-        if (inventory2 == null)
-        {
-            //permet de conserver l'objet quand on passe de chaine en chaines, sans le détruire
-            DontDestroyOnLoad(gameObject);
-            inventory2 = this;
-            
-        }
-        
-        //si un objet "inventory" a déjà été créé avant celui là alors on le conserve et on détruit celui là
-        else
-        {
-            if (inventory2 != this)
-            {
-                Destroy(gameObject);
-            }
-        }
-        
-    }
-    
+ 
     public void AddItem(Consumable itemToAdd)
     {
         for (int i = 0; i < items.Length; i++)
@@ -74,8 +53,8 @@ public class Inventory2 : MonoBehaviour
     public void RemoveItem (int slotNumber)
     {
                 Debug.Log("on retire l'objet");
-                Inventory.inventory.items[slotNumber].gameObject.SetActive(true);
-                Inventory.inventory.items[slotNumber].gameObject.transform.position = GameControl.player.playerModel.transform.position;
+                GetComponent<Inventory2>().items[slotNumber].gameObject.SetActive(true);
+                GetComponent<Inventory2>().items[slotNumber].gameObject.transform.position = GameControl.player.playerModel.transform.position;
         
                 items[slotNumber] = null;
                 itemImages[slotNumber].sprite = null;

@@ -17,9 +17,9 @@ public class PickUpItems : Interactable
     private GameObject model;
    
     
-    public override void interact()
+    public override void interact(PhotonView unPhotonView)
     {
-        
+        print("on desactive l'item");
         model.SetActive(false);
         
     }

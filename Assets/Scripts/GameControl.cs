@@ -22,7 +22,6 @@ public class GameControl : MonoBehaviour
     public GameObject playerModel;
     
     
-    // Start is called before the first frame update
     void Awake()
     {
         // si "player" n'a pas encore été créé alors "player" = this et il sera conservé de scène en scène
@@ -40,6 +39,15 @@ public class GameControl : MonoBehaviour
             if (player != this)
             {
                 Destroy(gameObject);
+            }
+        }
+        
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Joueur")) {
+            if(go.GetComponent<PhotonView>().owner == PhotonNetwork.player)
+            {
+                playerModel = go;
+                    
+                break;
             }
         }
         
