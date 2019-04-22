@@ -11,6 +11,9 @@ TagManager:
   - Joueur
   - Interactable
   - ItemSlot
+  - Inventory2
+  - Inventory
+  - Stats
   layers:
   - Default
   - TransparentFX

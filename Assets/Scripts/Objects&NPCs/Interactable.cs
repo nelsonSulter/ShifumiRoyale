@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour
     //Grace à l'héritage on va appeler tous nos objet de la même manière et toujours utiliser cette fonction "interact"
     //Elle aura des fonctions différente en fonction de la classe fille, ça simplifie le code
     //Pas besoin de se soucier de l'objet avec lequel on est confronté, ce sont tous des "Interactable" !
-    public virtual void interact()
+    public virtual void interact(PhotonView unPhotonView)
     {
         
         Debug.Log("interact with an interactable object");

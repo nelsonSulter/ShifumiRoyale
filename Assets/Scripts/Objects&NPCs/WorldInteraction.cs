@@ -13,13 +13,18 @@ public class WorldInteraction : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         
+        
         if (other.gameObject.tag == "Interactable") {
+
+            
             //Recupère l'input du joueur sur le clic gauche, et vérifie si notre clique est fait sur un élément UI de Unity
             //Si c'est le cas il n'enverra pas de raycast sur la map du jeu, c'est à dire que si un élément était caché derrière un bouton de l'UI
             //Uniy s'arrêtera au bouton, sans cette condition le personnage aurait aussi tenté de ramassé l'objet caché derrière l'interface UI
-            if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+            if (Input.GetMouseButtonDown(0) /*&& !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()*/)
             {
                 getInteraction();
+
+                Ray ray;
             }
 
         }
@@ -38,6 +43,8 @@ public class WorldInteraction : MonoBehaviour
         //La variable qui va servire à récupérer les infos à propos de l'endroit où on a cliqué
         RaycastHit interactionInfo;
         
+        
+        
         //on vérifie si le rayon interactionRay a touché quelque chose, si oui rentre l'info dans interactionInfo
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
@@ -45,7 +52,8 @@ public class WorldInteraction : MonoBehaviour
             //On vérifie si c'est un objet avec lequel on peut interagir
             if (interactedObject.tag == "Interactable")
             {
-                interactedObject.GetComponent<Interactable>().interact();
+                print("on rentre dans la partie où on appelle la fonction interactede l'objet");
+                interactedObject.GetComponent<Interactable>().interact(GetComponent<PhotonView>());
             }
         }
 

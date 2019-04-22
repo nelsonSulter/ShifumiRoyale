@@ -283,6 +283,30 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Autoritaire" t="Include">
+            <e p="CreateRoom" t="Include">
+              <e p="CreateRoom.cs" t="Include" />
+            </e>
+            <e p="CurrentRoom" t="Include">
+              <e p="CurrentRoomCanvas.cs" t="Include" />
+              <e p="PlayerLayoutGroup.cs" t="Include" />
+              <e p="PlayerListing.cs" t="Include" />
+            </e>
+            <e p="Generic" t="Include">
+              <e p="Ddol.cs" t="Include" />
+            </e>
+            <e p="Lobby" t="Include">
+              <e p="LobbyCanvas.cs" t="Include" />
+              <e p="RoomLayoutGroup.cs" t="Include" />
+              <e p="RoomListing.cs" t="Include" />
+            </e>
+            <e p="MainCanvasManager.cs" t="Include" />
+            <e p="Networks" t="Include">
+              <e p="LobbyNetwork.cs" t="Include" />
+              <e p="PlayerNetwork.cs" t="Include" />
+            </e>
+            <e p="PlayerManagement.cs" t="Include" />
+          </e>
           <e p="DesiredAspectRatio.cs" t="Include" />
           <e p="FightTrigger.cs" t="Include" />
           <e p="GameControl.cs" t="Include" />
@@ -308,6 +332,7 @@
             <e p="WorldInteraction.cs" t="Include" />
           </e>
           <e p="PaperBox.cs" t="Include" />
+          <e p="PlayerMovement.cs" t="Include" />
           <e p="PUN" t="Include">
             <e p="GUIController.cs" t="Include" />
             <e p="NetworkController.cs" t="Include" />

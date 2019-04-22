@@ -78,7 +78,7 @@ public class MovingTransformOfNonKinematicObjectScript : MonoBehaviour
                 wantToMoveBack = false;
         }
         
-        if (Input.GetKeyUp(KeyCode.Alpha1))
+        /*if (Input.GetKeyUp(KeyCode.Alpha1))
         {
             
             if(view.isMine)
@@ -115,7 +115,7 @@ public class MovingTransformOfNonKinematicObjectScript : MonoBehaviour
                 {
                     Inventory2.inventory2.items[3].Use();
                 }
-        }
+        }*/
         
         
 		
