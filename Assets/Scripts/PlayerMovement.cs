@@ -9,7 +9,14 @@ public class PlayerMovement : Photon.MonoBehaviour
 
     private Vector3 targetPosition;
     private Quaternion TargetRotation;
-    public int stoneDamage;
+    public float health;
+    public float maxHealth;
+    public float notoriety;
+    public float damageStone;
+    public float damagePaper;
+    public float damageScissor;
+    public int inFight;
+    public float movementSpeed;
     
     void Awake()
     {

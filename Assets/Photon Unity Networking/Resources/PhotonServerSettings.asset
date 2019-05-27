@@ -48,4 +48,15 @@ MonoBehaviour:
   - RPC_CreatePlayer
   - RPC_newStoneDamage
   - RPC_CreateStuff
+  - RPC_CreatePlayerManagement
+  - RPC_AddPlayerToLIst
+  - RPC_UpdateDamagePaper
+  - RPC_UpdateDamageScissor
+  - RPC_UpdateDamageStone
+  - RPC_UpdateHealth
+  - RPC_UpdateInFight
+  - RPC_UpdateMaxHealth
+  - RPC_UpdateMovementSpeed
+  - RPC_UpdateNotoriety
+  - RPC_UpdateStats
   DisableAutoOpenWizard: 1

@@ -342,6 +342,7 @@
           <e p="ScaleFont.cs" t="Include" />
           <e p="ScissorBox.cs" t="Include" />
           <e p="Score.cs" t="Include" />
+          <e p="StatRefresher.cs" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />

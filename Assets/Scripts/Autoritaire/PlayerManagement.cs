@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ExitGames.Client.Photon;
 using UnityEngine;
+using Debug = System.Diagnostics.Debug;
+
 
 public class PlayerManagement : MonoBehaviour
 {
@@ -10,6 +13,8 @@ public class PlayerManagement : MonoBehaviour
     
     // La fameuse liste qui va contenir toutes nos info de joueur dans le serveur
     private List<PlayerStats> _listeInfoJoueurs = new List<PlayerStats>();
+    
+    private PhotonView photonView;
 
     public List<PlayerStats> listeInfoJoueurs
     {
@@ -22,6 +27,8 @@ public class PlayerManagement : MonoBehaviour
     {
         Instance = this;
         serverPhotonView = GetComponent<PhotonView>();
+
+        photonView = GetComponent<PhotonView>();
     }
 
     public void addPlayerStats(PhotonPlayer unPhotonPlayer)
@@ -36,14 +43,8 @@ public class PlayerManagement : MonoBehaviour
     // Fonction qui sera utilisée pour tout les objets qui vont altérer les dégats de pierre d'un joueur en particulier
     public void modifyStoneDamage(PhotonPlayer unPhotonPlayer, int value)
     {
-        int index = listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == unPhotonPlayer);
-        if (index != -1)
-        {
-            listeInfoJoueurs[index].damageStone += value;
-            PlayerNetwork.instance.newStoneDamage(unPhotonPlayer, listeInfoJoueurs[index].damageStone);
-        }
+        PlayerNetwork.instance.newStoneDamage(unPhotonPlayer, value);
     }
-
 }
 
 

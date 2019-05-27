@@ -1,10 +1,12 @@
 ﻿
 using System;
+using System.Diagnostics;
 using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
 
@@ -59,14 +61,17 @@ public class PlayerNetwork : MonoBehaviour
 
     private void masterLoadedGame()
     {
-        
+        PhotonNetwork.Instantiate(Path.Combine("Prefabs", "PlayerManagement"), Vector3.up * 1,
+            Quaternion.identity, 0);
         photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient, PhotonNetwork.player);
         photonView.RPC("RPC_LoadGameOthers", PhotonTargets.Others);
+        
     }
     
     private void nonMasterLoadedGame()
     {
         photonView.RPC("RPC_LoadedGameScene", PhotonTargets.MasterClient, PhotonNetwork.player);
+        
     }
 
     [PunRPC]
@@ -78,7 +83,11 @@ public class PlayerNetwork : MonoBehaviour
     [PunRPC]
     private void RPC_LoadedGameScene(PhotonPlayer unPhotonPlayer)
     {
-        PlayerManagement.Instance.addPlayerStats(unPhotonPlayer);
+        
+        // Le master client complète la liste à chaque fois qu'un joueur rejoins la partie
+        photonView.RPC("RPC_AddPlayerToLIst", PhotonTargets.MasterClient, unPhotonPlayer);
+        
+        
         print("le joueur a été ajouté : " + unPhotonPlayer.ID);
         nbJoueurs = nbJoueurs + 1;
 
@@ -86,32 +95,49 @@ public class PlayerNetwork : MonoBehaviour
         {
             print("tous les joueurs ont rejoint la partie");
             photonView.RPC("RPC_CreatePlayer", PhotonTargets.All);
+            
         }
 
     }
 
     public void newStoneDamage(PhotonPlayer unPhotonPlayer, float stoneDamage)
     {
-        photonView.RPC("RPC_newStoneDamage", unPhotonPlayer, stoneDamage);
+        photonView.RPC("RPC_newStoneDamage",PhotonTargets.All, unPhotonPlayer, stoneDamage);
     }
     
     [PunRPC]
-    private void RPC_newStoneDamage(int value)
+    private void RPC_newStoneDamage(PhotonPlayer unPhotonPlayer, float stoneDamage)
     {
-        currentPlayer.stoneDamage = value;
+        int index = PlayerManagement.Instance.listeInfoJoueurs.FindIndex(x => x.photonPlayerJoueur == unPhotonPlayer);
+        if (index != -1)
+        {
+            PlayerManagement.Instance.listeInfoJoueurs[index].damageStone += stoneDamage;
+            
+        }
     }
     
 
     [PunRPC]
     private void RPC_CreatePlayer()
     {
+    
         float randomValue = Random.Range(0f, 5f);
         GameObject obj = PhotonNetwork.Instantiate(Path.Combine("Prefabs", "AutoritairePLayer"), Vector3.up * randomValue,
             Quaternion.identity, 0);
 
         currentPlayer = obj.GetComponent<PlayerMovement>();
-        
-        
+
+
+    }
+    
+    [PunRPC]
+    private void RPC_AddPlayerToLIst(PhotonPlayer unPhotonPlayer)
+    {
+    
+        PlayerManagement.Instance.addPlayerStats(unPhotonPlayer); 
+        print("le nombre de joueur dans la liste du player management : " + PlayerManagement.Instance.listeInfoJoueurs.Count);
+
+
     }
     
 
